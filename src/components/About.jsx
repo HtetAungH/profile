@@ -1,4 +1,3 @@
-// src/components/About.jsx
 /* eslint-disable no-unused-vars */
 import Mine from "../assets/Mine.jpg";
 import {
@@ -8,10 +7,11 @@ import {
   useMotionValue,
   useSpring,
 } from "framer-motion";
-import React, { useRef } from "react";
-import AnimatedSection from "./AnimatedSection";
+import { useRef } from "react";
+import TypingText from "./TypingText";
+import TextReveal from "./TextReveal";
+import ElegantShape from "./ElegantShape";
 
-// NEW: Created a dedicated TiltableImage component for reuse and clarity
 const TiltableImage = () => {
   const ref = useRef(null);
   const x = useMotionValue(0);
@@ -55,7 +55,8 @@ const TiltableImage = () => {
           className="rounded-lg shadow-2xl h-90 w-130 object-cover"
         />
         <motion.div
-          className="absolute -top-4 -left-4 w-[105%] h-[105%] border-4 border-sky-400/50 rounded-lg -z-10"
+          // CHANGED: Image border color to subtle gray
+          className="absolute -top-4 -left-4 w-[105%] h-[105%] border-4 border-gray-500/50 rounded-lg -z-10"
           initial={{ rotate: -6 }}
           style={{ transform: "translateZ(-30px)" }}
         ></motion.div>
@@ -66,16 +67,12 @@ const TiltableImage = () => {
 
 const About = () => {
   const targetRef = useRef(null);
-
-  // NEW: Scroll-triggered parallax effect setup
   const { scrollYProgress } = useScroll({
     target: targetRef,
     offset: ["start end", "end start"],
   });
 
-  // Image moves slightly faster than the scroll (y moves from -20% to 20%)
   const imageY = useTransform(scrollYProgress, [0, 1], ["-20%", "20%"]);
-  // Text moves slightly slower
   const textY = useTransform(scrollYProgress, [0, 1], ["20%", "-20%"]);
 
   const textContainerVariants = {
@@ -96,54 +93,83 @@ const About = () => {
   };
 
   return (
-    // AnimatedSection is no longer needed here as we use whileInView and scroll animations
-    <section id="about" ref={targetRef} className="py-24 overflow-hidden">
-      {" "}
-      {/* REMOVED bg-slate-800 */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* NEW: Glass panel wrapper */}
-        <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-8 md:p-12 shadow-lg">
-          <div className="grid md:grid-cols-5 gap-16 items-center">
-            {/* Image Column with Parallax */}
-            <motion.div className="md:col-span-2" style={{ y: imageY }}>
-              <TiltableImage />
-            </motion.div>
+    <section
+      id="about"
+      ref={targetRef}
+      className="py-24 overflow-hidden relative bg-[#030303]"
+    >
+      {/* START: UPDATED BACKGROUND LAYERS */}
+      {/* CHANGED: Blurry gradient to subtle gray tones */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-800/[0.05] via-transparent to-slate-900/[0.05] blur-3xl" />
+      <div className="absolute inset-0 overflow-hidden">
+        {/* CHANGED: Elegant shapes to neutral white/gray tones */}
+        <ElegantShape
+          delay={0.3}
+          width={600}
+          height={140}
+          rotate={12}
+          gradient="from-white/[0.07]"
+          className="left-[-10%] md:left-[-5%] top-[15%] md:top-[20%]"
+        />
+        <ElegantShape
+          delay={0.5}
+          width={500}
+          height={120}
+          rotate={-15}
+          gradient="from-gray-500/[0.07]"
+          className="right-[-5%] md:right-[0%] top-[70%] md:top-[75%]"
+        />
+        <ElegantShape
+          delay={0.4}
+          width={300}
+          height={80}
+          rotate={-8}
+          gradient="from-slate-600/[0.07]"
+          className="left-[5%] md:left-[10%] bottom-[5%] md:bottom-[10%]"
+        />
+      </div>
+      {/* END: UPDATED BACKGROUND LAYERS */}
 
-            {/* Text Column with Parallax and Staggered Entrance */}
-            <motion.div
-              className="md:col-span-3 text-left"
-              style={{ y: textY }}
-              variants={textContainerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* ADDED: Glass panel wrapper for content consistency */}
+
+        <div className="grid md:grid-cols-5 gap-16 items-center">
+          <motion.div className="md:col-span-2" style={{ y: imageY }}>
+            <TiltableImage />
+          </motion.div>
+          <motion.div
+            className="md:col-span-3 text-left"
+            style={{ y: textY }}
+            variants={textContainerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            <TypingText
+              text={["About Me", "My Journey", "My Passion"]}
+              typingSpeed={100}
+              pauseDuration={2000}
+              className="text-4xl font-bold mb-6 text-white"
+              variants={textItemVariants}
+            />
+            <motion.p
+              className="text-slate-300 text-lg mb-4"
+              variants={textItemVariants}
             >
-              <motion.h2
-                className="text-4xl font-bold mb-6 text-white"
-                variants={textItemVariants}
-              >
-                About Me
-              </motion.h2>
-              <motion.p
-                className="text-slate-300 text-lg mb-4"
-                variants={textItemVariants}
-              >
-                I am a dedicated frontend developer with a strong focus on
-                building modern, efficient, and scalable web applications using
-                React. With a deep understanding of the React ecosystem and
-                tools like Vite, I enjoy turning complex problems into beautiful
-                and intuitive user interfaces.
-              </motion.p>
-              <motion.p
+              I am a dedicated frontend developer with a strong focus on
+              building modern, efficient, and scalable web applications using
+              React. With a deep understanding of the React ecosystem and tools
+              like Vite, I enjoy turning complex problems into beautiful and
+              intuitive user interfaces.
+            </motion.p>
+            <motion.div variants={textItemVariants}>
+              <TextReveal
+                text="I'm passionate about writing clean code and learning new technologies."
+                revealText="Bringing ideas to life on the web is what drives me every day."
                 className="text-slate-300 text-lg"
-                variants={textItemVariants}
-              >
-                I'm passionate about writing clean code, optimizing performance,
-                and continuously learning new technologies to stay at the
-                forefront of web development.
-              </motion.p>
+              />
             </motion.div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

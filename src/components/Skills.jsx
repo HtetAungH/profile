@@ -1,89 +1,60 @@
-/* eslint-disable no-unused-vars */
-import React from "react";
-import { motion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
-import Icons from "./Icons";
+import Icons from "./Icons"; // Make sure this path is correct
+import IconSkillMarquee from "./IconSkillMarquee"; // Import the new marquee
+import ElegantShape from "./ElegantShape"; // Import the shape component
 
 const Skills = () => {
-  const skills = {
-    development: [
-      "React.js",
-      "Vite",
-      "JavaScript (ES6+)",
-      "TypeScript",
-      "Redux Toolkit",
-      "React Router",
-      "Tailwind CSS",
-      "Node.js",
-      "Express",
-      "Firebase",
-      "Jest",
-      "Git",
-    ],
-  };
-
-  const listContainer = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.07, delayChildren: 0.2 },
-    },
-  };
-
-  const listItem = {
-    hidden: { y: 20, opacity: 0 },
-    visible: { y: 0, opacity: 1 },
-  };
+  // UPDATED: Skills data is now an array of objects with names and icons
+  const developmentSkills = [
+    { name: "React.js", icon: <Icons.ReactIcon /> },
+    { name: "Vite", icon: <Icons.ViteIcon /> },
+    { name: "JavaScript", icon: <Icons.JavaScriptIcon /> },
+    { name: "TypeScript", icon: <Icons.TypeScriptIcon /> },
+    { name: "Redux", icon: <Icons.ReduxIcon /> },
+    { name: "Tailwind CSS", icon: <Icons.TailwindCssIcon /> },
+    { name: "Node.js", icon: <Icons.NodeJsIcon /> },
+    { name: "Firebase", icon: <Icons.FirebaseIcon /> },
+    { name: "Git", icon: <Icons.GitIcon /> },
+  ];
 
   return (
     <AnimatedSection id="skills">
-      <section id="skills" className="py-24">
-        {" "}
-        {/* REMOVED bg-slate-900 */}
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold mb-12 text-white">My Tech Stack</h2>
-          <div className="max-w-4xl mx-auto text-left">
-            {/* UPDATED className for glass panel */}
-            <div className="bg-white/5 backdrop-blur-lg border border-white/10 p-8 rounded-2xl shadow-lg">
-              <h3 className="text-2xl font-semibold mb-6 text-sky-300 flex items-center">
-                <Icons.CodeBracketIcon /> Development
-              </h3>
-              <motion.div
-                className="flex flex-wrap gap-3"
-                variants={listContainer}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.5 }}
-              >
-                {skills.development.map((skill, index) => (
-                  <motion.span
-                    key={skill}
-                    className="bg-white/10 text-white px-4 py-2 rounded-md font-medium text-sm border border-white/10"
-                    variants={listItem}
-                    // NEW: Continuous floating and enhanced hover animation
-                    initial={{ y: 0 }}
-                    animate={{
-                      y: [0, -5, 0],
-                      transition: {
-                        duration: 3,
-                        repeat: Infinity,
-                        delay: index * 0.1,
-                        ease: "easeInOut",
-                      },
-                    }}
-                    whileHover={{
-                      scale: 1.1,
-                      y: -8,
-                      backgroundColor: "#1e293b",
-                      color: "#38bdf8",
-                    }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
-                    {skill}
-                  </motion.span>
-                ))}
-              </motion.div>
-            </div>
+      {/* UPDATED: Added relative positioning and background from About.jsx */}
+      <section
+        id="skills"
+        className="py-24 overflow-hidden relative bg-[#030303]"
+      >
+        {/* START: BACKGROUND LAYERS from About.jsx */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-fuchsia-500/[0.05] via-transparent to-purple-500/[0.05] blur-3xl" />
+        <div className="absolute inset-0 overflow-hidden">
+          <ElegantShape
+            delay={0.3}
+            width={500}
+            height={120}
+            rotate={-15}
+            gradient="from-fuchsia-500/[0.1]"
+            className="left-[-5%] top-[10%]"
+          />
+          <ElegantShape
+            delay={0.5}
+            width={600}
+            height={140}
+            rotate={12}
+            gradient="from-purple-500/[0.1]"
+            className="right-[-10%] top-[60%]"
+          />
+        </div>
+        {/* END: BACKGROUND LAYERS */}
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <h2 className="text-4xl font-bold mb-16 text-white">My Tech Stack</h2>
+
+          {/* NEW: Using the IconSkillMarquee */}
+          <div className="space-y-8">
+            <IconSkillMarquee
+              skills={developmentSkills}
+              speed={30}
+              direction="left"
+            />
           </div>
         </div>
       </section>

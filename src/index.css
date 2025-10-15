@@ -29,5 +29,17 @@
 
 /* Ensure your root background is dark */
 body {
-  background-color: #0f172a; /* Tailwind's slate-950 */
+  background-color: #0f172a; /* bg-slate-950 */
+  color: #d1d5db; /* text-slate-300 */
+  background-image: linear-gradient(
+    to bottom,
+    #0f172a,
+    #000000,
+    #0f172a
+  ); /* bg-gradient-to-b from-slate-950 via-black to-slate-950 */
+}
+
+/* Optional: For smoother scrolling */
+html {
+  scroll-behavior: smooth;
 }

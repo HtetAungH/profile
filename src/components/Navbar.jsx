@@ -1,11 +1,11 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState("home");
   const [scrolled, setScrolled] = useState(false);
-  const [isOpen, setIsOpen] = useState(false); // NEW: State for mobile menu toggle
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,7 +19,7 @@ const Navbar = () => {
         if (
           element &&
           scrollPosition >= element.offsetTop &&
-          scrollPosition < element.offsetTop + element.offsetHeight
+          scrollPosition < element.offsetHeight + element.offsetTop
         ) {
           setActiveSection(section);
           break;
@@ -39,7 +39,6 @@ const Navbar = () => {
     { href: "#contact", label: "Contact" },
   ];
 
-  // NEW: Variants for the mobile menu animation
   const menuVariants = {
     open: {
       opacity: 1,
@@ -75,7 +74,8 @@ const Navbar = () => {
           <div className="flex items-center justify-between h-full">
             <motion.a
               href="#home"
-              className="text-2xl font-bold text-sky-400 hover:text-sky-300 transition-colors"
+              // CHANGED: Replaced purple with gray theme
+              className="text-2xl font-bold text-gray-400 hover:text-white transition-colors"
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
@@ -96,7 +96,8 @@ const Navbar = () => {
                   {activeSection === link.href.substring(1) && (
                     <motion.span
                       layoutId="active-pill"
-                      className="absolute inset-0 bg-sky-500/20 rounded-full"
+                      // CHANGED: Replaced purple with a white glassy effect
+                      className="absolute inset-0 bg-white/20 rounded-full"
                       transition={{
                         type: "spring",
                         stiffness: 300,
@@ -109,14 +110,14 @@ const Navbar = () => {
               ))}
             </div>
 
-            {/* NEW: Hamburger Menu Button */}
+            {/* Hamburger Menu Button */}
             <div className="md:hidden">
               <motion.button
                 onClick={() => setIsOpen(!isOpen)}
                 className="relative w-8 h-8 z-50"
                 animate={isOpen ? "open" : "closed"}
               >
-                {/* Top bar */}
+                {/* ... (hamburger icon spans remain the same) ... */}
                 <motion.span
                   className="absolute h-0.5 w-full bg-white"
                   style={{ y: "25%", left: "50%", x: "-50%" }}
@@ -125,13 +126,11 @@ const Navbar = () => {
                     closed: { rotate: 0, y: "25%" },
                   }}
                 />
-                {/* Middle bar */}
                 <motion.span
                   className="absolute h-0.5 w-full bg-white"
                   style={{ y: "50%", left: "50%", x: "-50%" }}
                   variants={{ open: { opacity: 0 }, closed: { opacity: 1 } }}
                 />
-                {/* Bottom bar */}
                 <motion.span
                   className="absolute h-0.5 w-full bg-white"
                   style={{ y: "75%", left: "50%", x: "-50%" }}
@@ -146,7 +145,7 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* NEW: Mobile Menu */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -161,12 +160,13 @@ const Navbar = () => {
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="text-3xl font-semibold text-slate-200 hover:text-sky-400 transition-colors"
+                // CHANGED: Replaced purple with gray theme
+                className="text-3xl font-semibold text-slate-200 hover:text-gray-400 transition-colors"
                 variants={navLinkVariants}
                 initial="closed"
                 animate="open"
                 exit="closed"
-                transition={{ delay: i * 0.1 + 0.2 }}
+                transition={{ delay: 0.1 * i + 0.2 }}
               >
                 {link.label}
               </motion.a>
