@@ -66,7 +66,7 @@ const Navbar = () => {
       <nav
         className={`fixed top-0 w-full z-50 transition-all duration-300 ${
           scrolled
-            ? "h-16 bg-white/10 backdrop-blur-lg shadow-lg border-b border-white/10"
+            ? "h-16 bg-black/30 backdrop-blur-lg shadow-lg border-b border-white/10"
             : "h-20 bg-transparent"
         }`}
       >
@@ -74,8 +74,8 @@ const Navbar = () => {
           <div className="flex items-center justify-between h-full">
             <motion.a
               href="#home"
-              // CHANGED: Replaced purple with gray theme
-              className="text-2xl font-bold text-gray-400 hover:text-white transition-colors"
+              // CHANGED: Replaced gray with amber theme
+              className="text-2xl font-bold text-amber-400 hover:text-white transition-colors"
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
@@ -96,8 +96,8 @@ const Navbar = () => {
                   {activeSection === link.href.substring(1) && (
                     <motion.span
                       layoutId="active-pill"
-                      // CHANGED: Replaced purple with a white glassy effect
-                      className="absolute inset-0 bg-white/20 rounded-full"
+                      // CHANGED: Replaced white glassy effect with amber
+                      className="absolute inset-0 bg-amber-400/20 rounded-full"
                       transition={{
                         type: "spring",
                         stiffness: 300,
@@ -117,7 +117,6 @@ const Navbar = () => {
                 className="relative w-8 h-8 z-50"
                 animate={isOpen ? "open" : "closed"}
               >
-                {/* ... (hamburger icon spans remain the same) ... */}
                 <motion.span
                   className="absolute h-0.5 w-full bg-white"
                   style={{ y: "25%", left: "50%", x: "-50%" }}
@@ -153,15 +152,15 @@ const Navbar = () => {
             initial="closed"
             animate="open"
             exit="closed"
-            className="fixed inset-0 z-40 bg-slate-950/95 backdrop-blur-xl flex flex-col items-center justify-center space-y-8"
+            className="fixed inset-0 z-40 bg-zinc-950/95 backdrop-blur-xl flex flex-col items-center justify-center space-y-8"
           >
             {navLinks.map((link, i) => (
               <motion.a
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                // CHANGED: Replaced purple with gray theme
-                className="text-3xl font-semibold text-slate-200 hover:text-gray-400 transition-colors"
+                // CHANGED: Replaced gray with amber theme
+                className="text-3xl font-semibold text-slate-200 hover:text-amber-400 transition-colors"
                 variants={navLinkVariants}
                 initial="closed"
                 animate="open"
