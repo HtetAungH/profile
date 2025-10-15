@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import { useForm } from "react-hook-form";
+import contactVideo from "../assets/video/contact.mp4";
 
 const Contact = () => {
   const form = useRef();
@@ -45,8 +46,24 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <section
+      id="contact"
+      className="py-24 overflow-hidden relative bg-[#030303]"
+    >
+      {/* START: Background Section */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute top-0 left-0 w-full h-full object-cover"
+      >
+        <source src={contactVideo} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div className="absolute inset-0 bg-black/75"></div>
+      {/* END: Background Section */}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         <h2 className="text-4xl font-bold mb-4 text-white">Get In Touch</h2>
         <p className="max-w-2xl mx-auto text-slate-300 mb-12">
           Have a project in mind or just want to say hello? Fill out the form

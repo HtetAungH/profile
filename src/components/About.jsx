@@ -10,7 +10,7 @@ import {
 import { useRef } from "react";
 import TypingText from "./TypingText";
 import TextReveal from "./TextReveal";
-import ElegantShape from "./ElegantShape";
+import nightview from "../assets/video/nightview.mp4";
 
 const TiltableImage = () => {
   const ref = useRef(null);
@@ -98,37 +98,19 @@ const About = () => {
       ref={targetRef}
       className="py-24 overflow-hidden relative bg-[#030303]"
     >
-      {/* START: UPDATED BACKGROUND LAYERS */}
-      {/* CHANGED: Blurry gradient to subtle gray tones */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-800/[0.05] via-transparent to-slate-900/[0.05] blur-3xl" />
-      <div className="absolute inset-0 overflow-hidden">
-        {/* CHANGED: Elegant shapes to neutral white/gray tones */}
-        <ElegantShape
-          delay={0.3}
-          width={600}
-          height={140}
-          rotate={12}
-          gradient="from-white/[0.07]"
-          className="left-[-10%] md:left-[-5%] top-[15%] md:top-[20%]"
-        />
-        <ElegantShape
-          delay={0.5}
-          width={500}
-          height={120}
-          rotate={-15}
-          gradient="from-gray-500/[0.07]"
-          className="right-[-5%] md:right-[0%] top-[70%] md:top-[75%]"
-        />
-        <ElegantShape
-          delay={0.4}
-          width={300}
-          height={80}
-          rotate={-8}
-          gradient="from-slate-600/[0.07]"
-          className="left-[5%] md:left-[10%] bottom-[5%] md:bottom-[10%]"
-        />
-      </div>
-      {/* END: UPDATED BACKGROUND LAYERS */}
+      {/* START: Background Section */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute top-0 left-0 w-full h-full object-cover"
+      >
+        <source src={nightview} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div className="absolute inset-0 bg-black/60"></div>
+      {/* END: Background Section */}
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* ADDED: Glass panel wrapper for content consistency */}

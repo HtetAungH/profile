@@ -4,6 +4,7 @@ import React from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
 import Icons from "./Icons";
+import systemVideo from "../assets/video/project.mp4";
 
 // NEW: Reusable 3D Tilt Card Component
 const TiltCard = ({ children }) => {
@@ -88,8 +89,24 @@ const Projects = () => {
 
   return (
     <AnimatedSection id="projects">
-      <section id="projects" className="py-24">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section
+        id="projects"
+        className="py-24 overflow-hidden relative bg-[#030303]"
+      >
+        {/* START: Background Section */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute top-0 left-0 w-full h-full object-cover"
+        >
+          <source src={systemVideo} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div className="absolute inset-0 bg-black/70"></div>
+        {/* END: Background Section */}
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h2 className="text-4xl font-bold mb-12 text-white">My Projects</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
             {projectData.map((project, index) => (

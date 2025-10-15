@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Icons from "./Icons";
 import AnimatedText from "./AnimatedText";
-import dark from "../assets/video/dark.mp4";
+import system from "../assets/video/system.mp4";
 
 const Hero = () => {
   const itemVariants = {
@@ -38,7 +38,7 @@ const Hero = () => {
         playsInline
         className="absolute top-0 left-0 w-full h-full object-cover"
       >
-        <source src={dark} type="video/mp4" />
+        <source src={system} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       {/* This overlay is crucial. You might want to make it darker if text is hard to read, e.g., bg-black/70 */}
