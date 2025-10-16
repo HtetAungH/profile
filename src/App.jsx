@@ -1,15 +1,15 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 
 // Import all your components
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Skills from "./components/Skills";
-import Projects from "./components/Projects";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
-import CursorFollower from "./components/CursorFollower";
-import BackToTopButton from "./components/BackToTopButton";
+import Navbar from "./components/Layout/Navbar";
+import Hero from "./components/Layout/Hero";
+import About from "./components/Layout/About";
+import Skills from "./components/Layout/Skills";
+import Projects from "./components/Layout/Projects";
+import Contact from "./components/Layout/Contact";
+import Footer from "./components/Layout/Footer";
+import CursorFollower from "./components/Effect/CursorFollower";
+import BackToTopButton from "./components/Effect/BackToTopButton";
 
 function App() {
   // This useEffect hook adds smooth scrolling for anchor links

@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-// src/components/TypingText.jsx
+
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 

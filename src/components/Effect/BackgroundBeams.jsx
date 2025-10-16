@@ -2,7 +2,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import React, { useRef, useState, useEffect } from "react";
 
-// The main component that sets up the scene
 export const BackgroundBeamsWithCollision = ({ children, className }) => {
   const containerRef = useRef(null);
   const parentRef = useRef(null);
@@ -70,7 +69,6 @@ export const BackgroundBeamsWithCollision = ({ children, className }) => {
   );
 };
 
-// Component that handles the moving beam and collision detection
 const CollisionMechanism = React.forwardRef(
   ({ parentRef, containerRef, beamOptions = {} }, ref) => {
     const beamRef = useRef(null);

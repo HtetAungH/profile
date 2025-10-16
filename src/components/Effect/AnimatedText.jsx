@@ -1,6 +1,4 @@
 /* eslint-disable no-unused-vars */
-// src/components/AnimatedText.jsx
-import React from "react";
 import { motion } from "framer-motion";
 
 const AnimatedText = ({ text, className = "" }) => {

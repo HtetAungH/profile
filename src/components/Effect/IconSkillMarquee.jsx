@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-// src/components/IconSkillMarquee.jsx
+
 import { motion } from "framer-motion";
 
 const IconSkillMarquee = ({ skills, speed = 20, direction = "left" }) => {
@@ -37,7 +37,6 @@ const IconSkillMarquee = ({ skills, speed = 20, direction = "left" }) => {
   );
 };
 
-// A simple component for displaying each skill card
 const SkillCard = ({ icon, name }) => (
   <div className="flex-shrink-0 flex items-center justify-center bg-white/5 border border-white/10 rounded-lg shadow-lg mx-3 px-6 py-3 space-x-3 backdrop-blur-lg">
     <div className="w-7 h-7">{icon}</div>

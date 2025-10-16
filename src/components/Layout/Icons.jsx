@@ -22,10 +22,6 @@ export const CodeBracketIcon = () => (
   <HiOutlineCodeBracket className="w-6 h-6" />
 );
 export const CodeIcon = () => <FaCode className="w-6 h-6" />;
-// --- END: Existing Social & General Icons ---
-
-// --- START: Added Tech Skill Icons ---
-// You can find great SVG icons from sites like https://svgl.app/
 
 const ReactIcon = () => (
   <svg
@@ -124,9 +120,7 @@ const GitIcon = () => (
     <path d="M12,2A10,10,0,0,0,2,12a10,10,0,0,0,10,10,10,10,0,0,0,10-10A10,10,0,0,0,12,2Zm1,15H11V11h2v6Zm0-8H11V7h2V9Z" />
   </svg>
 );
-// --- END: Added Tech Skill Icons ---
 
-// UPDATED: Export a single object containing ALL icons
 const Icons = {
   GitHubIcon,
   LinkedInIcon,
@@ -136,7 +130,6 @@ const Icons = {
   InstagramIcon,
   CodeBracketIcon,
   CodeIcon,
-  // Add the new icons to the export object
   ReactIcon,
   ViteIcon,
   JavaScriptIcon,

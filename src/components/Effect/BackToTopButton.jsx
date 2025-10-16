@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
-// src/components/BackToTopButton.jsx
-import React, { useState, useEffect } from "react";
+
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const BackToTopButton = () => {
@@ -8,6 +8,7 @@ const BackToTopButton = () => {
 
   useEffect(() => {
     const toggleVisibility = () => {
+      // Show button when user scrolls down 300px
       if (window.scrollY > 300) {
         setIsVisible(true);
       } else {
@@ -20,6 +21,7 @@ const BackToTopButton = () => {
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
+  // Smooth scroll to top function
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -32,7 +34,8 @@ const BackToTopButton = () => {
       {isVisible && (
         <motion.button
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-50 w-12 h-12 rounded-full bg-sky-500/80 text-white flex items-center justify-center shadow-lg backdrop-blur-sm hover:bg-sky-500 transition-colors"
+          // CUSTOMIZED: Changed button colors from sky to amber for theme consistency
+          className="fixed bottom-8 right-8 z-50 w-12 h-12 rounded-full bg-amber-500/80 text-zinc-900 flex items-center justify-center shadow-lg backdrop-blur-sm hover:bg-amber-500 transition-colors"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
@@ -45,7 +48,7 @@ const BackToTopButton = () => {
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
-            strokeWidth={2}
+            strokeWidth={2.5} // Made the icon slightly bolder
           >
             <path
               strokeLinecap="round"

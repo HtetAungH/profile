@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
-// src/components/CursorFollower.jsx
-import React, { useEffect, useState } from "react";
+
+import { useEffect, useState } from "react";
 import { motion, useSpring } from "framer-motion";
 
 const CursorFollower = () => {

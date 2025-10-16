@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-// src/components/TextReveal.jsx
+
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 

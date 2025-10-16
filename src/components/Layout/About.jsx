@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import Mine from "../assets/Mine.jpg";
+import Mine from "../../assets/Mine.jpg";
 import {
   motion,
   useScroll,
@@ -8,9 +8,8 @@ import {
   useSpring,
 } from "framer-motion";
 import { useRef } from "react";
-import TypingText from "./TypingText";
-import TextReveal from "./TextReveal";
-import nightview from "../assets/video/nightview.mp4";
+import TypingText from "../Effect/TypingText";
+import TextReveal from "../Effect/TextReveal";
 
 const TiltableImage = () => {
   const ref = useRef(null);
@@ -43,7 +42,7 @@ const TiltableImage = () => {
       ref={ref}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+      style={{ rotateX, rotateY, transformStyle: "preserve-d" }}
       className="relative w-full h-full"
     >
       <div
@@ -55,8 +54,8 @@ const TiltableImage = () => {
           className="rounded-lg shadow-2xl h-90 w-130 object-cover"
         />
         <motion.div
-          // CHANGED: Image border color to subtle gray
-          className="absolute -top-4 -left-4 w-[105%] h-[105%] border-4 border-gray-500/50 rounded-lg -z-10"
+          // CUSTOMIZED: Image border color changed to match hero's amber theme
+          className="absolute -top-4 -left-4 w-[105%] h-[105%] border-4 border-amber-500/30 rounded-lg -z-10"
           initial={{ rotate: -6 }}
           style={{ transform: "translateZ(-30px)" }}
         ></motion.div>
@@ -96,25 +95,12 @@ const About = () => {
     <section
       id="about"
       ref={targetRef}
-      className="py-24 overflow-hidden relative bg-[#030303]"
+      className="py-24 overflow-hidden relative bg-zinc-900"
     >
-      {/* START: Background Section */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute top-0 left-0 w-full h-full object-cover"
-      >
-        <source src={nightview} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-      <div className="absolute inset-0 bg-black/60"></div>
-      {/* END: Background Section */}
+      {/* Background Gradient to match Hero */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(251,191,36,0.1),rgba(255,255,255,0))]"></div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* ADDED: Glass panel wrapper for content consistency */}
-
         <div className="grid md:grid-cols-5 gap-16 items-center">
           <motion.div className="md:col-span-2" style={{ y: imageY }}>
             <TiltableImage />
@@ -131,7 +117,7 @@ const About = () => {
               text={["About Me", "My Journey", "My Passion"]}
               typingSpeed={100}
               pauseDuration={2000}
-              className="text-4xl font-bold mb-6 text-white"
+              className="text-4xl font-bold mb-6 text-amber-400"
               variants={textItemVariants}
             />
             <motion.p

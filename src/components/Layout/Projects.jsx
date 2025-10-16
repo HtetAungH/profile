@@ -1,12 +1,10 @@
-// src/components/Projects.jsx
 /* eslint-disable no-unused-vars */
 import React from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import AnimatedSection from "./AnimatedSection";
+import AnimatedSection from "../Effect/AnimatedSection";
 import Icons from "./Icons";
-import systemVideo from "../assets/video/project.mp4";
 
-// NEW: Reusable 3D Tilt Card Component
+// Reusable 3D Tilt Card Component
 const TiltCard = ({ children }) => {
   const ref = React.useRef(null);
   const x = useMotionValue(0);
@@ -54,7 +52,6 @@ const TiltCard = ({ children }) => {
 
 const Projects = () => {
   const projectData = [
-    // Your project data remains unchanged
     {
       title: "Petrol Station Management System",
       description:
@@ -89,34 +86,28 @@ const Projects = () => {
 
   return (
     <AnimatedSection id="projects">
+      {/* CUSTOMIZED: Replaced video with the consistent dark theme */}
       <section
         id="projects"
-        className="py-24 overflow-hidden relative bg-[#030303]"
+        className="py-24 overflow-hidden relative bg-zinc-900"
       >
-        {/* START: Background Section */}
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute top-0 left-0 w-full h-full object-cover"
-        >
-          <source src={systemVideo} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-        <div className="absolute inset-0 bg-black/70"></div>
-        {/* END: Background Section */}
+        {/* Background Gradient to match Hero/About */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(251,191,36,0.1),rgba(255,255,255,0))]"></div>
+
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <h2 className="text-4xl font-bold mb-12 text-white">My Projects</h2>
+          {/* CUSTOMIZED: Heading color changed to amber */}
+          <h2 className="text-4xl font-bold mb-12 text-amber-400">
+            My Projects
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
             {projectData.map((project, index) => (
-              // UPDATED: Wrapped card content in the TiltCard component
               <TiltCard key={index}>
+                {/* CUSTOMIZED: Updated card style to a solid dark theme, removing glassmorphism */}
                 <div
                   style={{ transform: "translateZ(50px)" }}
-                  className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl shadow-lg flex flex-col group h-full"
+                  className="bg-slate-800/50 border border-slate-700 rounded-xl shadow-lg flex flex-col group h-full"
                 >
-                  <div className="overflow-hidden">
+                  <div className="overflow-hidden rounded-t-xl">
                     <motion.img
                       src={project.image}
                       alt={project.title}
@@ -126,7 +117,8 @@ const Projects = () => {
                     />
                   </div>
                   <div className="p-6 flex flex-col flex-grow">
-                    <h3 className="text-xl font-bold mb-2 text-sky-400">
+                    {/* CUSTOMIZED: Project title color changed from sky to amber */}
+                    <h3 className="text-xl font-bold mb-2 text-amber-400">
                       {project.title}
                     </h3>
                     <p className="text-slate-300 text-sm flex-grow mb-4">
@@ -143,9 +135,10 @@ const Projects = () => {
                       ))}
                     </div>
                     <div className="mt-auto flex justify-end space-x-4">
+                      {/* CUSTOMIZED: Link hover color changed from sky to amber */}
                       <motion.a
                         href={project.githubLink}
-                        className="text-slate-400 hover:text-sky-400 transition-colors"
+                        className="text-slate-400 hover:text-amber-400 transition-colors"
                         title="View Code on GitHub"
                         whileHover={{ scale: 1.2, rotate: 10 }}
                         whileTap={{ scale: 0.9 }}
@@ -154,7 +147,7 @@ const Projects = () => {
                       </motion.a>
                       <motion.a
                         href={project.liveLink}
-                        className="text-slate-400 hover:text-sky-400 transition-colors"
+                        className="text-slate-400 hover:text-amber-400 transition-colors"
                         title="View Live Demo"
                         whileHover={{ scale: 1.2, rotate: -10 }}
                         whileTap={{ scale: 0.9 }}
