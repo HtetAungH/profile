@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import Icons from "./Icons";
 import AnimatedText from "../Effect/AnimatedText";
 import { BackgroundBeamsWithCollision } from "../Effect/BackgroundBeams";
-import cvPdf from "../../assets/cvform/Htet Aung Hlaing.pdf";
+import cvPdf from "../../assets/cvform/Htet Aung Hlaing Resume.pdf";
 
 const Hero = () => {
   const itemVariants = {
@@ -95,7 +95,7 @@ const Hero = () => {
               >
                 <motion.a
                   href={cvPdf}
-                  download="Htet Aung Hlaing.pdf"
+                  download="Htet Aung Hlaing Resume.pdf"
                   className="inline-block bg-amber-500 text-zinc-900 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-amber-400 transition-all duration-300"
                   whileHover={{
                     scale: 1.05,
