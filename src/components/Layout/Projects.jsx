@@ -3,6 +3,7 @@ import React from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import AnimatedSection from "../Effect/AnimatedSection";
 import Icons from "./Icons";
+import petrol from "../../assets/pertrol.jpg";
 
 // Reusable 3D Tilt Card Component
 const TiltCard = ({ children }) => {
@@ -56,11 +57,10 @@ const Projects = () => {
       title: "Petrol Station Management System",
       description:
         "A full-stack application for managing petrol station operations, including inventory, sales, and reporting.",
-      tags: ["React.js", "Node.js", "Express", "Material-UI"],
-      image:
-        "https://images.unsplash.com/photo-1570126618953-add7f268f1c4?auto=format&fit=crop&w=600&q=80",
-      githubLink: "#",
-      liveLink: "#",
+      tags: ["React.js", "Vite", "Tailwind CSS", "Framer Motion"],
+      image: petrol,
+      githubLink: "https://github.com/HtetAungH/pertrol_system",
+      liveLink: "https://pertrol-system.vercel.app/",
     },
     {
       title: "Kanban Task Manager",
