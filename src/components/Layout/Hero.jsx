@@ -20,7 +20,7 @@ const Hero = () => {
     { href: "#", icon: <Icons.TwitterIcon /> },
     { href: "#", icon: <Icons.InstagramIcon /> },
     {
-      href: "https://www.linkedin.com/in/htet-aung-hlaing-24a8b22a5/",
+      href: "https://www.linkedin.com/in/htet-aung-hlaing-front-enddeveloper/",
       icon: <Icons.LinkedInIcon />,
     },
   ];
