@@ -4,6 +4,7 @@ import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import AnimatedSection from "../Effect/AnimatedSection";
 import Icons from "./Icons";
 import petrol from "../../assets/pertrol.jpg";
+import slayer from "../../assets/slayer.png";
 
 // Reusable 3D Tilt Card Component
 const TiltCard = ({ children }) => {
@@ -73,14 +74,13 @@ const Projects = () => {
       liveLink: "#",
     },
     {
-      title: "Personal Portfolio Website",
+      title: "Demon Slayer Website",
       description:
         "This very website, built with modern technologies to showcase my skills and projects in a sleek, responsive design.",
       tags: ["React.js", "Vite", "Tailwind CSS", "Framer Motion"],
-      image:
-        "https://images.unsplash.com/photo-1559028006-448665bd7c24?auto=format&fit=crop&w=600&q=80",
-      githubLink: "#",
-      liveLink: "#",
+      image: slayer,
+      githubLink: "https://github.com/HtetAungH/demon_slayer",
+      liveLink: "https://demon-slayer-wheat.vercel.app/",
     },
   ];
 
