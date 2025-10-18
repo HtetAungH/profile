@@ -1,3 +1,5 @@
+"use client";
+
 /* eslint-disable no-unused-vars */
 import { motion } from "framer-motion";
 import Icons from "./Icons";
@@ -27,13 +29,12 @@ const Hero = () => {
 
   return (
     <section id="home">
-      {/* REPLACED: AuroraBackground with BackgroundBeamsWithCollision */}
       <BackgroundBeamsWithCollision>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-12 md:gap-8">
             <div className="text-center w-full">
               <motion.p
-                className="text-lg md:text-xl text-amber-200 mb-2"
+                className="text-lg md:text-xl bg-gradient-to-r from-amber-300 to-yellow-300 bg-clip-text text-transparent mb-2 font-medium"
                 variants={itemVariants}
                 initial="hidden"
                 animate="visible"
@@ -43,19 +44,20 @@ const Hero = () => {
               </motion.p>
               <AnimatedText
                 text="Htet Aung Hlaing"
-                className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-4"
+                className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-4 tracking-tight"
               />
               <motion.h2
-                className="text-2xl md:text-3xl lg:text-4xl font-semibold text-amber-400 mb-6"
+                className="text-2xl md:text-3xl lg:text-4xl font-semibold bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-400 bg-clip-text text-transparent mb-6"
                 variants={itemVariants}
                 initial="hidden"
                 animate="visible"
                 transition={{ delay: 0.8 }}
               >
-                And I'm a Frontend Developer
+                And I'm a{" "}
+                <span className="inline-block">Frontend Developer</span>
               </motion.h2>
               <motion.p
-                className="text-md md:text-lg text-slate-300 mb-8 max-w-xl mx-auto"
+                className="text-md md:text-lg text-slate-400 leading-relaxed mb-8 max-w-2xl mx-auto"
                 variants={itemVariants}
                 initial="hidden"
                 animate="visible"
@@ -78,8 +80,8 @@ const Hero = () => {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-12 h-12 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-amber-400 hover:bg-amber-400/20 hover:text-white transition-all duration-300 shadow-lg"
-                    whileHover={{ scale: 1.1, y: -5 }}
+                    className="w-12 h-12 flex items-center justify-center rounded-full bg-zinc-900/50 backdrop-blur-md border border-amber-500/30 text-amber-400 hover:bg-amber-500/20 hover:text-amber-300 hover:border-amber-400/60 transition-all duration-300 shadow-lg hover:shadow-amber-500/30"
+                    whileHover={{ scale: 1.15, y: -5, rotate: 5 }}
                     whileTap={{ scale: 0.9 }}
                   >
                     {link.icon}
@@ -96,14 +98,26 @@ const Hero = () => {
                 <motion.a
                   href={cvPdf}
                   download="Htet Aung Hlaing Resume.pdf"
-                  className="inline-block bg-amber-500 text-zinc-900 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-amber-400 transition-all duration-300"
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-yellow-500 text-zinc-900 font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-amber-500/50 hover:from-amber-400 hover:to-yellow-400 transition-all duration-300"
                   whileHover={{
                     scale: 1.05,
                     y: -3,
-                    boxShadow: "0 10px 20px -5px rgba(251, 191, 36, 0.4)",
                   }}
                   whileTap={{ scale: 0.95 }}
                 >
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                    />
+                  </svg>
                   Download CV
                 </motion.a>
               </motion.div>
