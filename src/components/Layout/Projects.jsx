@@ -5,6 +5,7 @@ import AnimatedSection from "../Effect/AnimatedSection";
 import Icons from "./Icons";
 import petrol from "../../assets/pertrol.jpg";
 import slayer from "../../assets/slayer.png";
+import headphone from "../../assets/headphone.png";
 
 // Reusable 3D Tilt Card Component
 const TiltCard = ({ children }) => {
@@ -64,14 +65,13 @@ const Projects = () => {
       liveLink: "https://pertrol-system.vercel.app/",
     },
     {
-      title: "Kanban Task Manager",
+      title: "Headphone Website",
       description:
-        "A drag-and-drop task management board built with React, featuring persistent state and a clean, modern interface.",
-      tags: ["React.js", "Vite", "Tailwind CSS", "Firebase"],
-      image:
-        "https://images.unsplash.com/photo-1547480053-7d174f67b557?auto=format&fit=crop&w=600&q=80",
-      githubLink: "#",
-      liveLink: "#",
+        "A modern, responsive headphone website with a clean design and interactive features.",
+      tags: ["React.js", "Vite", "Tailwind CSS"],
+      image: headphone,
+      githubLink: "https://github.com/HtetAungH/headphone",
+      liveLink: "https://headphone-wine.vercel.app/",
     },
     {
       title: "Demon Slayer Website",
@@ -138,6 +138,8 @@ const Projects = () => {
                       {/* CUSTOMIZED: Link hover color changed from sky to amber */}
                       <motion.a
                         href={project.githubLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="text-slate-400 hover:text-amber-400 transition-colors"
                         title="View Code on GitHub"
                         whileHover={{ scale: 1.2, rotate: 10 }}
@@ -147,6 +149,8 @@ const Projects = () => {
                       </motion.a>
                       <motion.a
                         href={project.liveLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="text-slate-400 hover:text-amber-400 transition-colors"
                         title="View Live Demo"
                         whileHover={{ scale: 1.2, rotate: -10 }}
