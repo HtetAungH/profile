@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import Icons from "./Icons";
 import AnimatedText from "../Effect/AnimatedText";
 import { BackgroundBeamsWithCollision } from "../Effect/BackgroundBeams";
-import cvPdf from "../../assets/cvform/Htet Aung Hlaing Resume.pdf";
+import cvPdf from "../../assets/cvform/Htet Aung Hlaing.pdf";
 
 const Hero = () => {
   const itemVariants = {
