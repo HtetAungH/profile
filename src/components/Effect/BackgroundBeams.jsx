@@ -44,10 +44,12 @@ export const BackgroundBeamsWithCollision = ({ children, className }) => {
   return (
     <div
       ref={parentRef}
-      className={`h-[100vh] bg-gradient-to-b from-zinc-950 to-zinc-800 relative flex items-center w-full justify-center overflow-hidden ${
+      className={`h-[100vh] bg-zinc-950 relative flex items-center w-full justify-center overflow-hidden ${
         className || ""
       }`}
     >
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.1)_0%,transparent_100%)]" />
+
       {beams.map((beam, index) => (
         <CollisionMechanism
           key={index}
@@ -56,14 +58,12 @@ export const BackgroundBeamsWithCollision = ({ children, className }) => {
           parentRef={parentRef}
         />
       ))}
-      {children}
+
+      <div className="relative z-10">{children}</div>
+
       <div
         ref={containerRef}
-        className="absolute bottom-0 bg-zinc-800 w-full inset-x-0 pointer-events-none"
-        style={{
-          boxShadow:
-            "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset",
-        }}
+        className="absolute bottom-0 bg-zinc-900/50 backdrop-blur-sm w-full inset-x-0 pointer-events-none h-px"
       ></div>
     </div>
   );
@@ -132,7 +132,7 @@ const CollisionMechanism = React.forwardRef(
           }}
           variants={{
             animate: {
-              translateY: "100vh",
+              translateY: "110vh", // Go slightly further to ensure collision
               translateX: `${beamOptions.translateX || 0}px`,
               rotate: beamOptions.rotate || 0,
             },
@@ -145,7 +145,7 @@ const CollisionMechanism = React.forwardRef(
             delay: beamOptions.delay || 0,
             repeatDelay: beamOptions.repeatDelay || 0,
           }}
-          className={`absolute left-0 top-0 m-auto h-14 w-px rounded-full bg-gradient-to-t from-amber-500 via-yellow-500 to-transparent ${
+          className={`absolute left-0 top-0 m-auto h-14 w-px rounded-full bg-gradient-to-t from-cyan-400 via-blue-500 to-transparent shadow-[0_0_20px_rgba(34,211,238,0.5)] ${
             beamOptions.className || ""
           }`}
         />
@@ -185,7 +185,7 @@ const Explosion = ({ ...props }) => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
-        className="absolute -inset-x-10 top-0 m-auto h-2 w-10 rounded-full bg-gradient-to-r from-transparent via-amber-500 to-transparent blur-sm"
+        className="absolute -inset-x-10 top-0 m-auto h-2 w-10 rounded-full bg-gradient-to-r from-transparent via-cyan-400 to-transparent blur-sm"
       ></motion.div>
       {spans.map((span) => (
         <motion.span
@@ -193,7 +193,7 @@ const Explosion = ({ ...props }) => {
           initial={{ x: 0, y: 0, opacity: 1 }}
           animate={{ x: span.directionX, y: span.directionY, opacity: 0 }}
           transition={{ duration: Math.random() * 1.5 + 0.5, ease: "easeOut" }}
-          className="absolute h-1 w-1 rounded-full bg-gradient-to-b from-amber-500 to-yellow-500"
+          className="absolute h-1 w-1 rounded-full bg-gradient-to-b from-cyan-400 to-blue-500 shadow-[0_0_10px_rgba(6,182,212,0.8)]"
         />
       ))}
     </div>

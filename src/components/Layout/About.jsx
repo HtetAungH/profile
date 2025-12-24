@@ -42,23 +42,28 @@ const TiltableImage = () => {
       ref={ref}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      style={{ rotateX, rotateY, transformStyle: "preserve-d" }}
-      className="relative w-full h-full"
+      style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+      className="relative w-full h-full p-4"
     >
       <div
         style={{ transform: "translateZ(30px)", transformStyle: "preserve-3d" }}
+        className="relative"
       >
         <img
           src={Mine}
           alt="Htet Aung"
-          className="rounded-lg shadow-2xl h-90 w-130 object-cover"
+          className="rounded-xl shadow-2xl h-90 w-130 object-cover border border-white/5 relative z-10"
         />
+        {/* Neon Border Effect */}
         <motion.div
-          // CUSTOMIZED: Image border color changed to match hero's amber theme
-          className="absolute -top-4 -left-4 w-[105%] h-[105%] border-4 border-amber-500/30 rounded-lg -z-10"
+          className="absolute -top-4 -left-4 w-[105%] h-[105%] border-2 border-cyan-500/40 rounded-xl -z-10 bg-cyan-500/5"
           initial={{ rotate: -6 }}
+          animate={{ rotate: -3 }}
+          transition={{ repeat: Infinity, repeatType: "reverse", duration: 4 }}
           style={{ transform: "translateZ(-30px)" }}
-        ></motion.div>
+        >
+          <div className="absolute inset-0 bg-cyan-400/20 blur-xl opacity-50"></div>
+        </motion.div>
       </div>
     </motion.div>
   );
@@ -95,10 +100,10 @@ const About = () => {
     <section
       id="about"
       ref={targetRef}
-      className="py-24 overflow-hidden relative bg-zinc-900"
+      className="py-24 overflow-hidden relative bg-zinc-950"
     >
-      {/* Background Gradient to match Hero */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(251,191,36,0.1),rgba(255,255,255,0))]"></div>
+      {/* Cool Radial Glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_60%_at_50%_10%,rgba(6,182,212,0.1),rgba(0,0,0,0))]"></div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid md:grid-cols-5 gap-16 items-center">
@@ -117,24 +122,26 @@ const About = () => {
               text={["About Me", "My Journey", "My Passion"]}
               typingSpeed={100}
               pauseDuration={2000}
-              className="text-4xl font-bold mb-6 text-amber-400"
+              className="text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500"
               variants={textItemVariants}
             />
             <motion.p
-              className="text-slate-300 text-lg mb-4"
+              className="text-zinc-400 text-lg mb-6 leading-relaxed"
               variants={textItemVariants}
             >
               I am a dedicated frontend developer with a strong focus on
               building modern, efficient, and scalable web applications using
-              React. With a deep understanding of the React ecosystem and tools
-              like Vite, I enjoy turning complex problems into beautiful and
-              intuitive user interfaces.
+              <span className="text-cyan-400 font-medium"> React</span>. With a
+              deep understanding of the ecosystem and tools like{" "}
+              <span className="text-purple-400 font-medium">Vite</span>, I enjoy
+              turning complex problems into beautiful and intuitive user
+              interfaces.
             </motion.p>
             <motion.div variants={textItemVariants}>
               <TextReveal
                 text="I'm passionate about writing clean code and learning new technologies."
                 revealText="Bringing ideas to life on the web is what drives me every day."
-                className="text-slate-300 text-lg"
+                className="text-zinc-400 text-lg"
               />
             </motion.div>
           </motion.div>

@@ -9,7 +9,6 @@ const TypingText = ({
   deletingSpeed = 50,
   pauseDuration = 1500,
   className = "",
-  showCursor = true,
 }) => {
   const [textIndex, setTextIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
@@ -21,7 +20,6 @@ const TypingText = ({
       const currentText = text[textIndex];
 
       if (isDeleting) {
-        // Handle deleting
         if (charIndex > 0) {
           setDisplayedText(currentText.substring(0, charIndex - 1));
           setCharIndex(charIndex - 1);
@@ -30,12 +28,10 @@ const TypingText = ({
           setTextIndex((prev) => (prev + 1) % text.length);
         }
       } else {
-        // Handle typing
         if (charIndex < currentText.length) {
           setDisplayedText(currentText.substring(0, charIndex + 1));
           setCharIndex(charIndex + 1);
         } else {
-          // Wait for the pause duration, then start deleting
           setTimeout(() => setIsDeleting(true), pauseDuration);
         }
       }
@@ -56,16 +52,15 @@ const TypingText = ({
   ]);
 
   return (
-    <div className={className}>
-      {displayedText}
-      {showCursor && (
-        <motion.span
-          animate={{ opacity: [0, 1, 0] }}
-          transition={{ duration: 0.7, repeat: Infinity }}
-          className="inline-block w-1 h-full bg-current ml-2"
-          style={{ height: "1em", verticalAlign: "text-bottom" }}
-        />
-      )}
+    <div className={`${className} font-mono`}>
+      <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-zinc-400">
+        {displayedText}
+      </span>
+      <motion.span
+        animate={{ opacity: [1, 0] }}
+        transition={{ duration: 0.8, repeat: Infinity, ease: "steps(2)" }}
+        className="inline-block w-[0.15em] h-[1.1em] bg-cyan-400 ml-1 align-bottom shadow-[0_0_8px_rgba(34,211,238,0.8)]"
+      />
     </div>
   );
 };

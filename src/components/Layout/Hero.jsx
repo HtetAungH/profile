@@ -28,100 +28,110 @@ const Hero = () => {
   ];
 
   return (
-    <section id="home">
+    <section
+      id="home"
+      className="relative h-screen flex flex-col justify-center"
+    >
       <BackgroundBeamsWithCollision>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-12 md:gap-8">
-            <div className="text-center w-full">
-              <motion.p
-                className="text-lg md:text-xl bg-gradient-to-r from-amber-300 to-yellow-300 bg-clip-text text-transparent mb-2 font-medium"
-                variants={itemVariants}
-                initial="hidden"
-                animate="visible"
-                transition={{ delay: 0.1 }}
-              >
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+          <div className="flex flex-col items-center justify-center text-center">
+            {/* Greeting Tag */}
+            <motion.div
+              className="inline-block px-3 py-1 mb-6 rounded-full border border-cyan-500/30 bg-cyan-500/10 backdrop-blur-sm"
+              variants={itemVariants}
+              initial="hidden"
+              animate="visible"
+              transition={{ delay: 0.1 }}
+            >
+              <p className="text-sm md:text-base text-cyan-300 font-medium tracking-wide">
                 Hello, It's Me
-              </motion.p>
-              <AnimatedText
-                text="Htet Aung Hlaing"
-                className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-4 tracking-tight"
-              />
-              <motion.h2
-                className="text-2xl md:text-3xl lg:text-4xl font-semibold bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-400 bg-clip-text text-transparent mb-6"
-                variants={itemVariants}
-                initial="hidden"
-                animate="visible"
-                transition={{ delay: 0.8 }}
-              >
-                And I'm a{" "}
-                <span className="inline-block">Frontend Developer</span>
-              </motion.h2>
-              <motion.p
-                className="text-md md:text-lg text-slate-400 leading-relaxed mb-8 max-w-2xl mx-auto"
-                variants={itemVariants}
-                initial="hidden"
-                animate="visible"
-                transition={{ delay: 0.9 }}
-              >
-                I craft beautiful, responsive, and high-performance web
-                experiences with a passion for clean code and modern technology.
-              </motion.p>
+              </p>
+            </motion.div>
 
-              <motion.div
-                className="flex justify-center space-x-4 mb-8"
-                variants={itemVariants}
-                initial="hidden"
-                animate="visible"
-                transition={{ delay: 1 }}
-              >
-                {socialLinks.map((link, index) => (
-                  <motion.a
-                    key={index}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 flex items-center justify-center rounded-full bg-zinc-900/50 backdrop-blur-md border border-amber-500/30 text-amber-400 hover:bg-amber-500/20 hover:text-amber-300 hover:border-amber-400/60 transition-all duration-300 shadow-lg hover:shadow-amber-500/30"
-                    whileHover={{ scale: 1.15, y: -5, rotate: 5 }}
-                    whileTap={{ scale: 0.9 }}
-                  >
-                    {link.icon}
-                  </motion.a>
-                ))}
-              </motion.div>
+            {/* Name */}
+            <AnimatedText
+              text="Htet Aung Hlaing"
+              className="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-tight mb-4 tracking-tight drop-shadow-2xl"
+            />
 
-              <motion.div
-                variants={itemVariants}
-                initial="hidden"
-                animate="visible"
-                transition={{ delay: 1.1 }}
-              >
+            {/* Role */}
+            <motion.h2
+              className="text-2xl md:text-3xl lg:text-4xl font-semibold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent mb-6"
+              variants={itemVariants}
+              initial="hidden"
+              animate="visible"
+              transition={{ delay: 0.8 }}
+            >
+              And I'm a{" "}
+              <span className="inline-block font-bold">Frontend Developer</span>
+            </motion.h2>
+
+            {/* Description */}
+            <motion.p
+              className="text-md md:text-lg text-zinc-400 leading-relaxed mb-8 max-w-2xl mx-auto"
+              variants={itemVariants}
+              initial="hidden"
+              animate="visible"
+              transition={{ delay: 0.9 }}
+            >
+              I craft beautiful, responsive, and high-performance web
+              experiences with a passion for clean code and modern technology.
+            </motion.p>
+
+            {/* Social Icons */}
+            <motion.div
+              className="flex justify-center space-x-6 mb-10"
+              variants={itemVariants}
+              initial="hidden"
+              animate="visible"
+              transition={{ delay: 1 }}
+            >
+              {socialLinks.map((link, index) => (
                 <motion.a
-                  href={cvPdf}
-                  download="Htet Aung Hlaing Resume.pdf"
-                  className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-yellow-500 text-zinc-900 font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-amber-500/50 hover:from-amber-400 hover:to-yellow-400 transition-all duration-300"
-                  whileHover={{
-                    scale: 1.05,
-                    y: -3,
-                  }}
-                  whileTap={{ scale: 0.95 }}
+                  key={index}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 flex items-center justify-center rounded-full bg-zinc-900/40 backdrop-blur-md border border-white/10 text-zinc-400 hover:text-cyan-400 hover:border-cyan-400/50 hover:bg-cyan-900/20 transition-all duration-300 shadow-lg hover:shadow-[0_0_20px_rgba(34,211,238,0.4)]"
+                  whileHover={{ scale: 1.15, y: -5 }}
+                  whileTap={{ scale: 0.9 }}
                 >
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                    />
-                  </svg>
-                  Download CV
+                  {link.icon}
                 </motion.a>
-              </motion.div>
-            </div>
+              ))}
+            </motion.div>
+
+            {/* CTA Button */}
+            <motion.div
+              variants={itemVariants}
+              initial="hidden"
+              animate="visible"
+              transition={{ delay: 1.1 }}
+            >
+              <motion.a
+                href={cvPdf}
+                download="Htet Aung Hlaing Resume.pdf"
+                className="group relative inline-flex items-center gap-2 bg-white text-zinc-950 font-bold py-3.5 px-8 rounded-full shadow-xl hover:shadow-[0_0_25px_rgba(255,255,255,0.4)] transition-all duration-300 overflow-hidden"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
+                <svg
+                  className="w-5 h-5 group-hover:animate-bounce"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2.5}
+                    d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                  />
+                </svg>
+                Download CV
+              </motion.a>
+            </motion.div>
           </div>
         </div>
       </BackgroundBeamsWithCollision>

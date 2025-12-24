@@ -8,7 +8,7 @@ const AnimatedText = ({ text, className = "" }) => {
     hidden: { opacity: 0 },
     visible: (i = 1) => ({
       opacity: 1,
-      transition: { staggerChildren: 0.12, delayChildren: 0.04 * i },
+      transition: { staggerChildren: 0.1, delayChildren: 0.04 * i },
     }),
   };
 
@@ -16,6 +16,7 @@ const AnimatedText = ({ text, className = "" }) => {
     visible: {
       opacity: 1,
       y: 0,
+      rotateX: 0,
       filter: "blur(0px)",
       transition: {
         type: "spring",
@@ -26,13 +27,14 @@ const AnimatedText = ({ text, className = "" }) => {
     hidden: {
       opacity: 0,
       y: 20,
-      filter: "blur(10px)",
+      rotateX: 90,
+      filter: "blur(5px)",
     },
   };
 
   return (
     <motion.h1
-      className={className}
+      className={`${className} perspective-[1000px]`}
       variants={container}
       initial="hidden"
       animate="visible"
@@ -41,7 +43,11 @@ const AnimatedText = ({ text, className = "" }) => {
         <motion.span
           key={index}
           variants={child}
-          style={{ marginRight: "0.5em", display: "inline-block" }}
+          style={{
+            marginRight: "0.25em",
+            display: "inline-block",
+            transformOrigin: "bottom center",
+          }}
         >
           {word}
         </motion.span>

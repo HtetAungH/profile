@@ -8,20 +8,16 @@ const BackToTopButton = () => {
 
   useEffect(() => {
     const toggleVisibility = () => {
-      // Show button when user scrolls down 300px
       if (window.scrollY > 300) {
         setIsVisible(true);
       } else {
         setIsVisible(false);
       }
     };
-
     window.addEventListener("scroll", toggleVisibility);
-
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
-  // Smooth scroll to top function
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -34,13 +30,13 @@ const BackToTopButton = () => {
       {isVisible && (
         <motion.button
           onClick={scrollToTop}
-          // CUSTOMIZED: Changed button colors from sky to amber for theme consistency
-          className="fixed bottom-8 right-8 z-50 w-12 h-12 rounded-full bg-amber-500/80 text-zinc-900 flex items-center justify-center shadow-lg backdrop-blur-sm hover:bg-amber-500 transition-colors"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 20 }}
-          transition={{ duration: 0.3 }}
-          aria-label="Go to top"
+          className="fixed bottom-8 right-8 z-50 w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 text-white flex items-center justify-center shadow-lg hover:shadow-[0_0_20px_rgba(6,182,212,0.6)] backdrop-blur-sm border border-white/20"
+          initial={{ opacity: 0, scale: 0.5, rotate: 45 }}
+          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+          exit={{ opacity: 0, scale: 0.5, rotate: 45 }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          transition={{ type: "spring", stiffness: 260, damping: 20 }}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +44,7 @@ const BackToTopButton = () => {
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
-            strokeWidth={2.5} // Made the icon slightly bolder
+            strokeWidth={3}
           >
             <path
               strokeLinecap="round"

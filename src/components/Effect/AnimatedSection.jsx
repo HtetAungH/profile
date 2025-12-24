@@ -4,13 +4,22 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 const sectionVariant = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  hidden: { opacity: 0, y: 30, scale: 0.95, filter: "blur(10px)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    filter: "blur(0px)",
+    transition: {
+      duration: 0.8,
+      ease: [0.22, 1, 0.36, 1], // Custom Bezier for premium feel
+    },
+  },
 };
 
-const AnimatedSection = ({ children, id }) => {
+const AnimatedSection = ({ children, id, className = "" }) => {
   const controls = useAnimation();
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.15 });
 
   useEffect(() => {
     if (inView) {
@@ -22,6 +31,7 @@ const AnimatedSection = ({ children, id }) => {
     <motion.section
       id={id}
       ref={ref}
+      className={className}
       variants={sectionVariant}
       initial="hidden"
       animate={controls}

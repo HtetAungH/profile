@@ -17,21 +17,20 @@ const Skills = () => {
 
   return (
     <AnimatedSection id="skills">
-      {/* CUSTOMIZED: Replaced video with the consistent dark theme */}
       <section
         id="skills"
-        className="py-24 overflow-hidden relative bg-zinc-900"
+        className="py-24 overflow-hidden relative bg-zinc-950"
       >
-        {/* Background Gradient to match Hero/About */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(251,191,36,0.1),rgba(255,255,255,0))]"></div>
+        {/* Subtle Cyan Glow */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(34,211,238,0.05),rgba(0,0,0,0))]"></div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          {/* CUSTOMIZED: Heading color changed to amber for consistency */}
-          <h2 className="text-4xl font-bold mb-16 text-amber-400">
+          <h2 className="text-4xl font-bold mb-16 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent drop-shadow-md">
             My Tech Stack
           </h2>
 
           <div className="space-y-8">
+            {/* The IconSkillMarquee already has the new glass card design */}
             <IconSkillMarquee
               skills={developmentSkills}
               speed={30}
