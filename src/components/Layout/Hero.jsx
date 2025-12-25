@@ -78,7 +78,7 @@ const Hero = () => {
               experiences with a passion for clean code and modern technology.
             </motion.p>
 
-            {/* Social Icons */}
+            {/* Social Icons - CUSTOMIZED SIZE HERE */}
             <motion.div
               className="flex justify-center space-x-6 mb-10"
               variants={itemVariants}
@@ -92,7 +92,7 @@ const Hero = () => {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-12 h-12 flex items-center justify-center rounded-full bg-zinc-900/40 backdrop-blur-md border border-white/10 text-zinc-400 hover:text-cyan-400 hover:border-cyan-400/50 hover:bg-cyan-900/20 transition-all duration-300 shadow-lg hover:shadow-[0_0_20px_rgba(34,211,238,0.4)]"
+                  className="w-10 h-10 p-2.5 flex items-center justify-center rounded-full bg-zinc-900/40 backdrop-blur-md border border-white/10 text-zinc-400 hover:text-cyan-400 hover:border-cyan-400/50 hover:bg-cyan-900/20 transition-all duration-300 shadow-lg hover:shadow-[0_0_20px_rgba(34,211,238,0.4)]"
                   whileHover={{ scale: 1.15, y: -5 }}
                   whileTap={{ scale: 0.9 }}
                 >
