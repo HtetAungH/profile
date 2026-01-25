@@ -44,7 +44,7 @@ export const BackgroundBeamsWithCollision = ({ children, className }) => {
   return (
     <div
       ref={parentRef}
-      className={`h-[100vh] bg-zinc-950 relative flex items-center w-full justify-center overflow-hidden ${
+      className={`h-[100vh] bg-transparent relative flex items-center w-full justify-center overflow-hidden ${
         className || ""
       }`}
     >
