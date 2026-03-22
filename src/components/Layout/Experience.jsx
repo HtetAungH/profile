@@ -23,12 +23,6 @@ const ExperienceCard = ({ data, index }) => {
       transition={{ duration: 0.6, delay: index * 0.2 }}
       className="relative flex flex-col items-center w-full max-w-4xl mx-auto z-20"
     >
-      {/* Central Connector Node (The glowing dot on top of the card) */}
-      <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 flex items-center justify-center w-6 h-6 rounded-full bg-zinc-950 border border-cyan-500 shadow-[0_0_15px_rgba(6,182,212,0.8)] z-30">
-        <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-      </div>
-
-      {/* Card Content */}
       <div className="w-full relative group">
         <div
           className="
@@ -42,11 +36,9 @@ const ExperienceCard = ({ data, index }) => {
             hover:border-cyan-500/40 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)]
           "
         >
-          {/* Cyber Gradient overlay on hover */}
           <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 relative z-10">
-            {/* Left Side: Role & Company */}
             <div>
               <h3 className="text-2xl md:text-3xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">
                 {data.title}
@@ -57,7 +49,6 @@ const ExperienceCard = ({ data, index }) => {
               </p>
             </div>
 
-            {/* Right Side: Date Tag */}
             <div className="md:text-right">
               <span className="inline-block px-4 py-1.5 text-sm font-mono font-semibold text-cyan-300 bg-cyan-950/40 rounded-full border border-cyan-500/30 shadow-[0_0_10px_rgba(6,182,212,0.1)]">
                 {data.date}
@@ -65,14 +56,12 @@ const ExperienceCard = ({ data, index }) => {
             </div>
           </div>
 
-          {/* Description */}
           <div className="mt-8 relative">
             <p className="text-zinc-300 text-base md:text-lg leading-relaxed max-w-3xl">
               {data.description}
             </p>
           </div>
 
-          {/* Tech Stack Tags */}
           <div className="mt-8 pt-6 border-t border-white/5 flex flex-wrap gap-3">
             {data.tech.map((item, i) => (
               <span
@@ -85,7 +74,7 @@ const ExperienceCard = ({ data, index }) => {
                   transition-all duration-300
                 "
               >
-                # {item}
+                #{item}
               </span>
             ))}
           </div>
@@ -101,47 +90,41 @@ const Experience = () => {
     target: ref,
     offset: ["start end", "end start"],
   });
-
   const height = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
 
   return (
-    <AnimatedSection id="experience">
-      <section ref={ref} className="py-24 relative bg-zinc-950 overflow-hidden">
-        {/* Ambient Glow Background */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/5 rounded-full blur-[120px] pointer-events-none" />
+    <AnimatedSection
+      id="experience"
+      className="py-24 relative bg-zinc-950 overflow-hidden"
+    >
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-20">
+          <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-500 drop-shadow-sm inline-block relative">
+            Professional Journey
+            <div className="absolute -bottom-4 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-50" />
+          </h2>
+        </div>
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-500 drop-shadow-sm inline-block relative">
-              Professional Journey
-              {/* Underline Decoration */}
-              <div className="absolute -bottom-4 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-50" />
-            </h2>
+        <div className="relative max-w-5xl mx-auto min-h-[400px]">
+          <div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-px bg-zinc-800">
+            <motion.div
+              style={{ height, opacity }}
+              className="w-full bg-gradient-to-b from-cyan-400 via-blue-500 to-purple-600 shadow-[0_0_8px_rgba(6,182,212,0.8)]"
+            />
           </div>
 
-          <div className="relative max-w-5xl mx-auto min-h-[400px]">
-            {/* The Central Spine Line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-px bg-zinc-800">
-              <motion.div
-                style={{ height, opacity }}
-                className="w-full bg-gradient-to-b from-cyan-400 via-blue-500 to-purple-600 shadow-[0_0_8px_rgba(6,182,212,0.8)]"
-              />
-            </div>
+          <div className="space-y-16 pt-8">
+            {ExperienceData.map((item, index) => (
+              <ExperienceCard key={index} data={item} index={index} />
+            ))}
+          </div>
 
-            <div className="space-y-16 pt-8">
-              {ExperienceData.map((item, index) => (
-                <ExperienceCard key={index} data={item} index={index} />
-              ))}
-            </div>
-
-            {/* End Node (Decoration at the bottom of the line) */}
-            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full pt-8 opacity-50">
-              <div className="w-2 h-2 rounded-full bg-zinc-700"></div>
-            </div>
+          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full pt-8 opacity-50">
+            <div className="w-2 h-2 rounded-full bg-zinc-700" />
           </div>
         </div>
-      </section>
+      </div>
     </AnimatedSection>
   );
 };

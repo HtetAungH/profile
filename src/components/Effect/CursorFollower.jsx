@@ -9,14 +9,12 @@ const CursorFollower = () => {
   useEffect(() => {
     const handleMouseMove = (e) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
-
-      // Check if hovering over clickable elements
       const target = e.target;
       setIsHovering(
         target.tagName === "BUTTON" ||
           target.tagName === "A" ||
           target.closest("button") ||
-          target.closest("a")
+          target.closest("a"),
       );
     };
 
@@ -32,7 +30,6 @@ const CursorFollower = () => {
 
   return (
     <>
-      {/* Main Follower (Outer Glow) */}
       <motion.div
         className="pointer-events-none fixed left-0 top-0 z-[999] rounded-full bg-cyan-500/30 blur-xl mix-blend-screen"
         animate={{
@@ -46,8 +43,6 @@ const CursorFollower = () => {
           y: "-50%",
         }}
       />
-
-      {/* Center Dot (Sharp) */}
       <motion.div
         className="pointer-events-none fixed left-0 top-0 z-[1000] h-2 w-2 rounded-full bg-white shadow-[0_0_10px_rgba(34,211,238,0.8)]"
         style={{

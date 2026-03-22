@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 
 const AnimatedText = ({ text, className = "" }) => {
   const words = text.split(" ");
-
   const container = {
     hidden: { opacity: 0 },
     visible: (i = 1) => ({
@@ -11,7 +10,6 @@ const AnimatedText = ({ text, className = "" }) => {
       transition: { staggerChildren: 0.1, delayChildren: 0.04 * i },
     }),
   };
-
   const child = {
     visible: {
       opacity: 1,

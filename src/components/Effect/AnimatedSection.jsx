@@ -12,7 +12,7 @@ const sectionVariant = {
     filter: "blur(0px)",
     transition: {
       duration: 0.8,
-      ease: [0.22, 1, 0.36, 1], // Custom Bezier for premium feel
+      ease: [0.22, 1, 0.36, 1],
     },
   },
 };

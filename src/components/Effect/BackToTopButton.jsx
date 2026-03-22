@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -49,7 +48,7 @@ const BackToTopButton = () => {
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
-              d="M5 15l7-7 7 7"
+              d="M5 10l7-7m0 0l7 7m-7-7v18"
             />
           </svg>
         </motion.button>

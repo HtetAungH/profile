@@ -1,10 +1,8 @@
-"use client";
-
 /* eslint-disable no-unused-vars */
+"use client";
 import { motion } from "framer-motion";
 import Icons from "./Icons";
 import AnimatedText from "../Effect/AnimatedText";
-// import { BackgroundBeamsWithCollision } from "../Effect/BackgroundBeams";
 import cvPdf from "../../assets/cvform/Htet Aung Hlaing.pdf";
 import codingJpg from "../../assets/coding.jpg";
 
@@ -34,13 +32,12 @@ const Hero = () => {
       className="relative h-screen flex flex-col justify-center bg-cover bg-center"
       style={{ backgroundImage: `url(${codingJpg})` }}
     >
-      <div className="absolute inset-0 bg-black/50 z-10" />
+      <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/70 via-zinc-950/50 to-zinc-950/90 z-10" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         <div className="flex flex-col items-center justify-center text-center">
-          {/* Greeting Tag */}
           <motion.div
-            className="inline-block px-3 py-1 mb-6 rounded-full border border-cyan-500/30 bg-cyan-500/10 backdrop-blur-sm"
+            className="inline-block px-4 py-1.5 mb-6 rounded-full border border-cyan-500/30 bg-cyan-500/10 backdrop-blur-sm"
             variants={itemVariants}
             initial="hidden"
             animate="visible"
@@ -51,13 +48,11 @@ const Hero = () => {
             </p>
           </motion.div>
 
-          {/* Name */}
           <AnimatedText
             text="Htet Aung Hlaing"
-            className="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-tight mb-4 tracking-tight drop-shadow-2xl"
+            className="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-tight mb-4 tracking-tight"
           />
 
-          {/* Role */}
           <motion.h2
             className="text-2xl md:text-3xl lg:text-4xl font-semibold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent mb-6"
             variants={itemVariants}
@@ -69,7 +64,6 @@ const Hero = () => {
             <span className="inline-block font-bold">Frontend Developer</span>
           </motion.h2>
 
-          {/* Description */}
           <motion.p
             className="text-md md:text-lg text-zinc-400 leading-relaxed mb-8 max-w-2xl mx-auto"
             variants={itemVariants}
@@ -81,7 +75,6 @@ const Hero = () => {
             with a passion for clean code and modern technology.
           </motion.p>
 
-          {/* Social Icons - CUSTOMIZED SIZE HERE */}
           <motion.div
             className="flex justify-center space-x-6 mb-10"
             variants={itemVariants}
@@ -95,7 +88,7 @@ const Hero = () => {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 p-2.5 flex items-center justify-center rounded-full bg-zinc-900/40 backdrop-blur-md border border-white/10 text-zinc-400 hover:text-cyan-400 hover:border-cyan-400/50 hover:bg-cyan-900/20 transition-all duration-300 shadow-lg hover:shadow-[0_0_20px_rgba(34,211,238,0.4)]"
+                className="w-12 h-12 flex items-center justify-center rounded-full bg-zinc-900/40 backdrop-blur-md border border-white/10 text-zinc-400 hover:text-cyan-400 hover:border-cyan-400/50 hover:bg-cyan-900/20 transition-all duration-300 shadow-lg"
                 whileHover={{ scale: 1.15, y: -5 }}
                 whileTap={{ scale: 0.9 }}
               >
@@ -104,7 +97,6 @@ const Hero = () => {
             ))}
           </motion.div>
 
-          {/* CTA Button */}
           <motion.div
             variants={itemVariants}
             initial="hidden"
@@ -114,11 +106,11 @@ const Hero = () => {
             <motion.a
               href={cvPdf}
               download="Htet Aung Hlaing.pdf"
-              className="group relative inline-flex items-center gap-2 bg-white text-zinc-950 font-bold py-3.5 px-8 rounded-full shadow-xl hover:shadow-[0_0_25px_rgba(255,255,255,0.4)] transition-all duration-300 overflow-hidden"
+              className="group relative inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold py-4 px-8 rounded-full shadow-xl hover:shadow-[0_0_30px_rgba(6,182,212,0.5)] transition-all duration-300 overflow-hidden"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
+              <span className="absolute inset-0 w-full h-full bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <svg
                 className="w-5 h-5 group-hover:animate-bounce"
                 fill="none"

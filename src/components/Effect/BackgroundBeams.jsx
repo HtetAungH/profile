@@ -5,7 +5,6 @@ import React, { useRef, useState, useEffect } from "react";
 export const BackgroundBeamsWithCollision = ({ children, className }) => {
   const containerRef = useRef(null);
   const parentRef = useRef(null);
-
   const beams = [
     { initialX: 10, translateX: 10, duration: 7, repeatDelay: 3, delay: 2 },
     { initialX: 600, translateX: 600, duration: 3, repeatDelay: 3, delay: 4 },
@@ -44,12 +43,8 @@ export const BackgroundBeamsWithCollision = ({ children, className }) => {
   return (
     <div
       ref={parentRef}
-      className={`h-[100vh] bg-transparent relative flex items-center w-full justify-center overflow-hidden ${
-        className || ""
-      }`}
+      className={`h-[100vh] bg-transparent relative flex items-center w-full justify-center overflow-hidden ${className || ""}`}
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.1)_0%,transparent_100%)]" />
-
       {beams.map((beam, index) => (
         <CollisionMechanism
           key={index}
@@ -58,13 +53,11 @@ export const BackgroundBeamsWithCollision = ({ children, className }) => {
           parentRef={parentRef}
         />
       ))}
-
       <div className="relative z-10">{children}</div>
-
       <div
         ref={containerRef}
         className="absolute bottom-0 bg-zinc-900/50 backdrop-blur-sm w-full inset-x-0 pointer-events-none h-px"
-      ></div>
+      />
     </div>
   );
 };
@@ -132,7 +125,7 @@ const CollisionMechanism = React.forwardRef(
           }}
           variants={{
             animate: {
-              translateY: "110vh", // Go slightly further to ensure collision
+              translateY: "110vh",
               translateX: `${beamOptions.translateX || 0}px`,
               rotate: beamOptions.rotate || 0,
             },
@@ -145,9 +138,7 @@ const CollisionMechanism = React.forwardRef(
             delay: beamOptions.delay || 0,
             repeatDelay: beamOptions.repeatDelay || 0,
           }}
-          className={`absolute left-0 top-0 m-auto h-14 w-px rounded-full bg-gradient-to-t from-cyan-400 via-blue-500 to-transparent shadow-[0_0_20px_rgba(34,211,238,0.5)] ${
-            beamOptions.className || ""
-          }`}
+          className={`absolute left-0 top-0 m-auto h-14 w-px rounded-full bg-gradient-to-t from-cyan-400 via-blue-500 to-transparent shadow-[0_0_20px_rgba(34,211,238,0.5)] ${beamOptions.className || ""}`}
         />
         <AnimatePresence>
           {collision.detected && collision.coordinates && (
@@ -163,11 +154,11 @@ const CollisionMechanism = React.forwardRef(
         </AnimatePresence>
       </>
     );
-  }
+  },
 );
+
 CollisionMechanism.displayName = "CollisionMechanism";
 
-// Component for the explosion effect
 const Explosion = ({ ...props }) => {
   const spans = Array.from({ length: 20 }, (_, index) => ({
     id: index,
@@ -186,7 +177,7 @@ const Explosion = ({ ...props }) => {
         exit={{ opacity: 0 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
         className="absolute -inset-x-10 top-0 m-auto h-2 w-10 rounded-full bg-gradient-to-r from-transparent via-cyan-400 to-transparent blur-sm"
-      ></motion.div>
+      />
       {spans.map((span) => (
         <motion.span
           key={span.id}

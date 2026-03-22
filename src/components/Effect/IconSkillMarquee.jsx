@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-
 import { motion } from "framer-motion";
 
 const IconSkillMarquee = ({ skills, speed = 30, direction = "left" }) => {
@@ -18,11 +17,7 @@ const IconSkillMarquee = ({ skills, speed = 30, direction = "left" }) => {
   };
 
   return (
-    <div className="w-full overflow-hidden py-10 relative">
-      {/* Fade edges for seamless look */}
-      <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-zinc-950 to-transparent z-10 pointer-events-none" />
-      <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-zinc-950 to-transparent z-10 pointer-events-none" />
-
+    <div className="relative w-full overflow-hidden">
       <motion.div
         className="flex gap-4"
         variants={marqueeVariants}
@@ -44,19 +39,9 @@ const IconSkillMarquee = ({ skills, speed = 30, direction = "left" }) => {
 };
 
 const SkillCard = ({ icon, name }) => (
-  <div
-    className="group flex-shrink-0 flex items-center justify-center 
-                  bg-zinc-900/40 border border-white/5 
-                  hover:border-cyan-500/30 hover:bg-cyan-900/10 hover:shadow-[0_0_15px_rgba(6,182,212,0.15)]
-                  rounded-xl mx-2 px-6 py-4 space-x-4 
-                  backdrop-blur-md transition-all duration-300"
-  >
-    <div className="w-8 h-8 text-zinc-400 group-hover:text-cyan-400 transition-colors duration-300">
-      {icon}
-    </div>
-    <span className="text-lg font-medium text-zinc-300 group-hover:text-white transition-colors duration-300">
-      {name}
-    </span>
+  <div className="flex items-center gap-3 bg-zinc-900/60 backdrop-blur-md border border-white/10 rounded-xl px-6 py-4 shadow-lg hover:border-cyan-500/30 transition-all duration-300 min-w-max">
+    <div className="text-cyan-400">{icon}</div>
+    <span className="text-zinc-300 font-medium">{name}</span>
   </div>
 );
 

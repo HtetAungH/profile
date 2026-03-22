@@ -40,7 +40,6 @@ export const TextReveal = ({ text, revealText, className = "" }) => {
       ref={containerRef}
       className={`relative overflow-hidden cursor-crosshair group ${className}`}
     >
-      {/* Top Layer: Revealed Text (Glowing) */}
       <motion.div
         style={{ width: "100%" }}
         animate={{
@@ -59,8 +58,6 @@ export const TextReveal = ({ text, revealText, className = "" }) => {
           {revealText}
         </p>
       </motion.div>
-
-      {/* Bottom Layer: Base Text (Dim) */}
       <div className="overflow-hidden">
         <p className={`${className} text-zinc-600`}>{text}</p>
       </div>

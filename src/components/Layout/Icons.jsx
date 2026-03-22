@@ -11,10 +11,7 @@ import {
   FaNodeJs,
   FaGitAlt,
 } from "react-icons/fa";
-
 import { HiOutlineCodeBracket } from "react-icons/hi2";
-
-// Import brand icons from Simple Icons (included in react-icons)
 import {
   SiVite,
   SiJavascript,
@@ -24,58 +21,36 @@ import {
   SiFirebase,
 } from "react-icons/si";
 
-// --- Social & General Icons ---
-export const GitHubIcon = () => <FaGithub className="w-full h-full" />;
-export const LinkedInIcon = () => <FaLinkedinIn className="w-full h-full" />;
-export const ExternalLinkIcon = () => (
-  <FaExternalLinkAlt className="w-full h-full" />
-);
-export const FacebookIcon = () => <FaFacebookF className="w-full h-full" />;
-export const TwitterIcon = () => <FaTwitter className="w-full h-full" />;
-export const InstagramIcon = () => <FaInstagram className="w-full h-full" />;
+// Social & General Icons
+export const GitHubIcon = () => <FaGithub className="w-5 h-5" />;
+export const LinkedInIcon = () => <FaLinkedinIn className="w-5 h-5" />;
+export const ExternalLinkIcon = () => <FaExternalLinkAlt className="w-5 h-5" />;
+export const FacebookIcon = () => <FaFacebookF className="w-5 h-5" />;
+export const TwitterIcon = () => <FaTwitter className="w-5 h-5" />;
+export const InstagramIcon = () => <FaInstagram className="w-5 h-5" />;
 export const CodeBracketIcon = () => (
-  <HiOutlineCodeBracket className="w-full h-full" />
+  <HiOutlineCodeBracket className="w-5 h-5" />
 );
-export const CodeIcon = () => <FaCode className="w-full h-full" />;
+export const CodeIcon = () => <FaCode className="w-5 h-5" />;
 
-// --- Tech Stack Icons (Fixed) ---
-export const ReactIcon = () => (
-  <FaReact className="w-full h-full text-[#61DAFB]" />
-);
-
-export const ViteIcon = () => (
-  <SiVite className="w-full h-full text-[#646CFF]" />
-);
-
+// Tech Stack Icons
+export const ReactIcon = () => <FaReact className="w-8 h-8 text-cyan-400" />;
+export const ViteIcon = () => <SiVite className="w-8 h-8 text-purple-400" />;
 export const JavaScriptIcon = () => (
-  <SiJavascript className="w-full h-full text-[#F7DF1E] bg-black" />
-  // bg-black added because JS logo is usually yellow square with black text,
-  // or you can just use text-yellow if you prefer the shape.
+  <SiJavascript className="w-8 h-8 text-yellow-400" />
 );
-
 export const TypeScriptIcon = () => (
-  <SiTypescript className="w-full h-full text-[#3178C6]" />
+  <SiTypescript className="w-8 h-8 text-blue-400" />
 );
-
-export const ReduxIcon = () => (
-  <SiRedux className="w-full h-full text-[#764ABC]" />
-);
-
+export const ReduxIcon = () => <SiRedux className="w-8 h-8 text-purple-500" />;
 export const TailwindCssIcon = () => (
-  <SiTailwindcss className="w-full h-full text-[#06B6D4]" />
+  <SiTailwindcss className="w-8 h-8 text-cyan-500" />
 );
-
-export const NodeJsIcon = () => (
-  <FaNodeJs className="w-full h-full text-[#339933]" />
-);
-
+export const NodeJsIcon = () => <FaNodeJs className="w-8 h-8 text-green-500" />;
 export const FirebaseIcon = () => (
-  <SiFirebase className="w-full h-full text-[#FFCA28]" />
+  <SiFirebase className="w-8 h-8 text-orange-500" />
 );
-
-export const GitIcon = () => (
-  <FaGitAlt className="w-full h-full text-[#F05032]" />
-);
+export const GitIcon = () => <FaGitAlt className="w-8 h-8 text-red-500" />;
 
 const Icons = {
   GitHubIcon,

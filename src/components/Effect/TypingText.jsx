@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
@@ -18,7 +17,6 @@ const TypingText = ({
   useEffect(() => {
     const handleTyping = () => {
       const currentText = text[textIndex];
-
       if (isDeleting) {
         if (charIndex > 0) {
           setDisplayedText(currentText.substring(0, charIndex - 1));
@@ -53,9 +51,7 @@ const TypingText = ({
 
   return (
     <div className={`${className} font-mono`}>
-      <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-zinc-400">
-        {displayedText}
-      </span>
+      {displayedText}
       <motion.span
         animate={{ opacity: [1, 0] }}
         transition={{ duration: 0.8, repeat: Infinity, ease: "steps(2)" }}

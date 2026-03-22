@@ -15,11 +15,9 @@ const TiltableImage = () => {
   const ref = useRef(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-
   const springConfig = { stiffness: 150, damping: 20 };
   const mouseXSpring = useSpring(x, springConfig);
   const mouseYSpring = useSpring(y, springConfig);
-
   const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"]);
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
 
@@ -61,9 +59,7 @@ const TiltableImage = () => {
           animate={{ rotate: -3 }}
           transition={{ repeat: Infinity, repeatType: "reverse", duration: 4 }}
           style={{ transform: "translateZ(-30px)" }}
-        >
-          <div className="absolute inset-0 bg-cyan-400/20 blur-xl opacity-50"></div>
-        </motion.div>
+        />
       </div>
     </motion.div>
   );
@@ -75,7 +71,6 @@ const About = () => {
     target: targetRef,
     offset: ["start end", "end start"],
   });
-
   const imageY = useTransform(scrollYProgress, [0, 1], ["-20%", "20%"]);
   const textY = useTransform(scrollYProgress, [0, 1], ["20%", "-20%"]);
 
@@ -102,9 +97,6 @@ const About = () => {
       ref={targetRef}
       className="py-24 overflow-hidden relative bg-zinc-950"
     >
-      {/* Cool Radial Glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_60%_at_50%_10%,rgba(6,182,212,0.1),rgba(0,0,0,0))]"></div>
-
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid md:grid-cols-5 gap-16 items-center">
           <motion.div className="md:col-span-2" style={{ y: imageY }}>

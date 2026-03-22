@@ -1,10 +1,9 @@
 /* eslint-disable no-unused-vars */
-
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import { useForm } from "react-hook-form";
-import contactVideo from "../../assets/video/contact.mp4";
+import AnimatedSection from "../Effect/AnimatedSection";
 
 const Contact = () => {
   const form = useRef();
@@ -20,13 +19,12 @@ const Contact = () => {
   const sendEmail = () => {
     setIsSubmitting(true);
     setSubmissionStatus(null);
-    // Keys preserved as requested
     emailjs
       .sendForm(
         "service_m6njvis",
         "template_mpyjzz8",
         form.current,
-        "y2oV8SPfxWDMQtMqs"
+        "y2oV8SPfxWDMQtMqs",
       )
       .then(
         (result) => {
@@ -35,7 +33,7 @@ const Contact = () => {
         },
         (error) => {
           setSubmissionStatus("error");
-        }
+        },
       )
       .finally(() => {
         setIsSubmitting(false);
@@ -43,20 +41,10 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 overflow-hidden relative bg-black">
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute top-0 left-0 w-full h-full object-cover opacity-60"
-      >
-        <source src={contactVideo} type="video/mp4" />
-      </video>
-      {/* Cool Blue/Black Tint Overlay */}
-      <div className="absolute inset-0 bg-zinc-950/80 mix-blend-multiply"></div>
-      <div className="absolute inset-0 bg-gradient-to-b from-zinc-950 via-transparent to-zinc-950"></div>
-
+    <AnimatedSection
+      id="contact"
+      className="py-24 relative bg-zinc-950 overflow-hidden"
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         <h2 className="text-4xl font-bold mb-4 text-white drop-shadow-[0_0_10px_rgba(6,182,212,0.5)]">
           Get In Touch
@@ -115,7 +103,7 @@ const Contact = () => {
                 placeholder="Message"
                 {...register("message", { required: "Required" })}
                 className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all resize-none"
-              ></textarea>
+              />
               {errors.message && (
                 <span className="text-red-400 text-xs">
                   {errors.message.message}
@@ -148,7 +136,7 @@ const Contact = () => {
           )}
         </motion.div>
       </div>
-    </section>
+    </AnimatedSection>
   );
 };
 
